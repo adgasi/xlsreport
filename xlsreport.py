@@ -9,7 +9,6 @@ import xlwt
 def main():
     # parse and validate CL arguments
     argv = sys.argv[1:]
-    srcPath = ''
     try:
         opts, args = getopt.getopt(argv, "i:")
         if not opts:
@@ -19,14 +18,14 @@ def main():
         usage()
         sys.exit(2)
 
+    srcPath = ''
     for opt, arg in opts:
-        print('for loop!!', opt, arg)
         if opt == '-h':
             usage()
             sys.exit(2)
         elif opt == '-i':
             srcPath = arg
-    print('srcPath', srcPath)
+
     # xlwt creates columns with a default width of 2962. 
     # measured in 1/256 of the width of the character ‘0’. 
     COL_BASE_WIDTH = 256
@@ -34,7 +33,7 @@ def main():
     book = copy(open_workbook(srcPath))
     sheet = book.get_sheet(0)
 
-    # styles
+    # style cells
     styleCommon = xlwt.XFStyle()
     styleHeaders = xlwt.XFStyle()
     
@@ -51,7 +50,7 @@ def main():
     sheet.write(10, 11, '部長', styleHeaders)
     sheet.write(10, 12, '日付', styleHeaders)
 
-    # merged cells
+    # merge cells
     sheet.write_merge(11, 12, 10, 10, '', styleCommon)
     sheet.write_merge(11, 12, 11, 11, '', styleCommon)
     sheet.write_merge(11, 12, 12, 12, '', styleCommon)
