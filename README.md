@@ -1,7 +1,7 @@
 # xlsreport
 Modifies a given *.xls file by creating a table for signature in specific cells with some text and styles.
 
-## Motivation:
+## Motivation
 At the beginning of the month I have to generate the work record sheet for the previous month. Work record system allows to download it as a *.xls file. Having it downloaded, the following steps need to be performed:
 1. Manually edit a file and add a specific table for signature
 2. Print and sign the document myself
